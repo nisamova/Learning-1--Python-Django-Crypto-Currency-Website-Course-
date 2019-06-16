@@ -1,1 +1,74 @@
-<h1>Hello Crypto Site</h1>
+{% extends 'base.html' %}
+
+# NSI base.html, main source of entire website html and then extended to other pages
+{% block content %}
+<div class="jumbotron">
+  <h1 class="display-4">Welcome To Crypto News Network</h1>
+  <p class="lead">Blockchain Technology Learning</p>
+</div>
+<!--    <strong>Currency:</strong>{{ key}}<br/>
+    <strong>Price:</strong>{{ value.USD.PRICE }}<br/>
+    <strong>Daily High</strong>{{ value.USD.HIGHDAY }}<br/>
+    <strong>Daily Low:</strong>{{ value.USD.LOWDAY }}<br/>
+    <strong>Market Cap:</strong>{{ value.USD.MKTCAP }}<br/>
+    <strong>Change 24 H:</strong>{{ value.USD.CHANGE24HOUR }}<br/>
+    <strong>Change Day:</strong>{{ value.USD.CHANGEDAY }}<br/>
+    -->
+<!--NSI BOOTSTRAP TABLE HERE TO DISPLAY CRYPTO-->
+<table class="table table-bordered table-dark table-hover">
+<thead>
+<tr>
+  <th scope="col">Name</th>
+  <th scope="col">Price</th>
+  <th scope="col">High</th>
+  <th scope="col">Low</th>
+  <th scope="col">Change -24H</th>
+  <th scope="col">Today Change</th>
+  <th scope="col">Market Cap</th>
+</tr>
+</thead>
+{% for key, value in price.DISPLAY.items %}
+
+<tbody>
+<tr>
+  <!--<th scope="row">1</th> -->
+  <td>{{ key}}</td>
+  <td>{{ value.USD.PRICE }}</td>
+  <td>{{ value.USD.HIGHDAY }}</td>
+  <td>{{ value.USD.LOWDAY }}</td>
+  <td>{{ value.USD.CHANGE24HOUR }}</td>
+  <td>{{ value.USD.CHANGEDAY }}</td>
+  <td>{{ value.USD.MKTCAP }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+<!-- TABLE FOR BOOTSTRAP END HERE -->
+<br/><br/>
+{{ price.PRICE }}
+<!--#obeject oriented programming with Python NSI-->
+<div class="container">
+  <div class="row">
+    {% for x in api.Data %}
+    <div class="col-sm">
+    <div class="card" style="width:18rem;">
+      <img class="card-image-top" src="{{ x.imageurl }}" alt="{{ x.source }}">
+      <div clas="card-body">
+        <h5 class="card-title">{{ x.title }} </h5>
+        <p class="card-text"> {{ x.body }}</p>
+        <a href="{{ x.url }}" class="btn btn-secondary"> Read More...</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+  </div>
+</div>
+
+<!-- TEST NSI example of variable x where x.body brings body of article/news-->
+<!--<ul>
+{% for x in api.Data %}
+<li>{{x.body}}</li>
+{% endfor %}
+</ul>
+{{ api.Data }}
+{% endblock %} -->
